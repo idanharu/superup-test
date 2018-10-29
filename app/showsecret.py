@@ -45,7 +45,7 @@ app = Flask(__name__)
 
 @app.route("/health")
 def health():
-     return "{ status: healthy, container: https://hub.docker.com/r/idanharu/superup-test/ , project: github.com/omerxx/ecscale }"
+     return json.dumps("{ status: healthy, container: https://hub.docker.com/r/idanharu/superup-test/ ,project: github.com/omerxx/ecscale }", indent=4, cls=DecimalEncoder)
 
 @app.route("/secret")
 def secret():
