@@ -1,0 +1,4 @@
+web:
+  image: showsecret
+  ports:
+   - "5000:80"
