@@ -43,9 +43,9 @@ else:
 
 app = Flask(__name__)
 
-@app.route("/")
-def index():
-     return "INDEX!"
+@app.route("/health")
+def health():
+     return "{ status: healthy, container: https://hub.docker.com/r/idanharu/superup-test/ , project: github.com/omerxx/ecscale }"
 
 @app.route("/secret")
 def secret():
