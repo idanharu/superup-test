@@ -4,11 +4,13 @@ dist: trusty
 jobs:
   include:
     - stage: build docker image
+      script: docker build -t showsecret .
+    - stage: test
+      script: docker run --rm $DOCKER_USERNAME/superup-test
+    - stage: deploy docker image
       script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t showsecret .
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password$
       - docker images
       - docker tag showsecret $DOCKER_USERNAME/superup-test
       - docker push $DOCKER_USERNAME/superup-test
-    - stage: test
-      script: docker run --rm $DOCKER_USERNAME/superup-test
+
